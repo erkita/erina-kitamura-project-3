@@ -7,26 +7,30 @@ import { createPost, updatePost } from "../../actions/posts";
 import { useHistory } from "react-router-dom";
 
 const Form = ({ currentId, setCurrentId }) => {
-  const post = useSelector((state) =>
-    currentId ? state.posts.find((post) => post._id === currentId) : null
-  );
   const [postData, setPostData] = useState({
     subject: "",
     message: "",
-    tags: [],
+    usdaZone: "",
+    lightNeeds: "",
+    waterNeeds: "",
     selectedFiles: "",
   });
-  const classes = useStyles();
+  const post = useSelector((state) =>
+    currentId ? state.posts.find((post) => post._id === currentId) : null
+  );
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("profile"));
   const history = useHistory();
+  const classes = useStyles();
 
   const clear = () => {
     setCurrentId(0);
     setPostData({
       subject: "",
       message: "",
-      tags: [],
+      usdaZone: "",
+      lightNeeds: "",
+      waterNeeds: "",
       selectedFiles: "",
     });
   };
@@ -44,7 +48,7 @@ const Form = ({ currentId, setCurrentId }) => {
   };
 
   useEffect(() => {
-    if (!post?.title) {
+    if (!post?.subject) {
       clear();
     }
     if (post) {
@@ -75,11 +79,41 @@ const Form = ({ currentId, setCurrentId }) => {
         <TextField
           name="subject"
           variant="outlined"
-          label="Subject"
+          label="Plant Name"
           fullWidth
           value={postData.subject}
           onChange={(e) =>
             setPostData({ ...postData, subject: e.target.value })
+          }
+        />
+        <TextField
+          name="usdaZone"
+          variant="outlined"
+          label="USDA Zone"
+          fullWidth
+          value={postData.usdaZone}
+          onChange={(e) =>
+            setPostData({ ...postData, usdaZone: e.target.value })
+          }
+        />
+        <TextField
+          name="lightNeeds"
+          variant="outlined"
+          label="Light Needs"
+          fullWidth
+          value={postData.lightNeeds}
+          onChange={(e) =>
+            setPostData({ ...postData, lightNeeds: e.target.value })
+          }
+        />
+        <TextField
+          name="waterNeeds"
+          variant="outlined"
+          label="Water Needs"
+          fullWidth
+          value={postData.waterNeeds}
+          onChange={(e) =>
+            setPostData({ ...postData, waterNeeds: e.target.value })
           }
         />
         <TextField

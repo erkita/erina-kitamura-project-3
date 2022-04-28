@@ -102,8 +102,11 @@ const Post = ({ post, setCurrentId }) => {
         {user?.result?._id === post?.user && (
           <div className={classes.button}>
             <Button
+              onClick={(e) => {
+                e.stopPropagation();
+                setCurrentId(post._id);
+              }}
               className={classes.editButton}
-              onClick={(e) => handleEdit(e, post._id)}
             >
               <MoreHorizIcon fontSize="medium" />
             </Button>
