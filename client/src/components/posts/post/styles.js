@@ -14,9 +14,11 @@ export default makeStyles((theme) => ({
     },
     [theme.breakpoints.down("sm")]: {
       margin: "2.75vw",
+      marginBottom: "-1vh",
     },
     [theme.breakpoints.down("xs")]: {
       margin: "2.55vw",
+      marginBottom: "-2vh",
     },
   },
   cardMedia: {
