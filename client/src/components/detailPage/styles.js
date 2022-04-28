@@ -25,10 +25,14 @@ export default makeStyles((theme) => ({
     marginBottom: "1vh",
     color: "#564434",
   },
+  imageSection: {
+    display: "flex",
+    justifyContent: "center",
+  },
   media: {
     objectFit: "scale-down",
-    width: "100%",
+    width: "55vw",
     maxHeight: "55vh",
-    marginBottom: "0.75vh",
+    marginBottom: "3vh",
   },
 }));

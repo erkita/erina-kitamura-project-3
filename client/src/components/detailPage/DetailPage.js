@@ -39,27 +39,30 @@ const DetailPage = () => {
             variant="body1"
             component="p"
           >
-            {`USDA zone: ${post.usdaZone}`}
+            <b>USDA Zone: &nbsp;&nbsp;&nbsp;</b>
+            {post.usdaZone}
           </Typography>
           <Typography
             className={classes.plantDetails}
             variant="body1"
             component="p"
           >
-            {`Light needs: ${post.lightNeeds}`}
+            <b>Light Needs: &nbsp;&nbsp;</b>
+            {post.lightNeeds}
           </Typography>
           <Typography
             className={classes.plantDetails}
             variant="body1"
             component="p"
           >
-            {`Water needs: ${post.waterNeeds}`}
+            <b>Water Needs: &nbsp;</b>
+            {post.waterNeeds}
           </Typography>
           <Typography variant="body1" component="p" gutterBottom>
             {post.message}
           </Typography>
         </div>
-        <div>
+        <div className={classes.imageSection}>
           <img
             className={classes.media}
             src={post.selectedFile || default_post_bg}
