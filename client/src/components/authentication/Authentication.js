@@ -8,11 +8,11 @@ import {
   Button,
 } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import useStyles from "./styles";
 import UserInfo from "./UserInfo";
 import { useDispatch } from "react-redux";
 import { signIn, signUp } from "../../actions/authentication.js";
 import { useHistory } from "react-router-dom";
+import useStyles from "./styles";
 
 const initialUserState = {
   firstName: "",
@@ -24,7 +24,7 @@ const initialUserState = {
 
 const Authentication = () => {
   const classes = useStyles();
-  const [hasAccount, setHasAccount] = useState(false);
+  const [hasAccount, setHasAccount] = useState(true);
   const [visiblePassword, setVisiblePassword] = useState(false);
   const [userData, setUserData] = useState(initialUserState);
   const dispatch = useDispatch();
@@ -37,6 +37,11 @@ const Authentication = () => {
     } else {
       dispatch(signUp(userData, history));
     }
+    // if (hasAccount) {
+    //   dispatch(signUp(userData, history));
+    // } else {
+    //   dispatch(signIn(userData, history));
+    // }
   };
 
   const handleChange = (e) => {
@@ -52,14 +57,15 @@ const Authentication = () => {
     setHasAccount((prevHasAccount) => !prevHasAccount);
     setVisiblePassword(false);
   };
+
   return (
     <Container component="main" maxWidth="xs">
-      <Paper className={classes.paper} elevation={6}>
+      <Paper className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
-        <Typography component="h1" variant="h5">
-          {hasAccount ? "Sign in" : "Sign up"}
+        <Typography className={classes.fontColor} variant="h5">
+          {!hasAccount ? "Sign up" : "Sign in"}
         </Typography>
         <form className={classes.form} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
@@ -100,19 +106,18 @@ const Authentication = () => {
               />
             )}
           </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
+          <Button type="submit" fullWidth className={classes.submitButton}>
             {hasAccount ? "Sign in" : "Sign up"}
           </Button>
           <Grid container justifyContent="center">
             <Grid item>
-              <Button onClick={handleSignInAndUp}>
-                {hasAccount ? "Sign up" : "Already have an account? Sign in"}
+              <Button
+                className={classes.submitButtonInverse}
+                onClick={handleSignInAndUp}
+              >
+                {hasAccount
+                  ? "Create an account"
+                  : "Already have an account? Sign in"}
               </Button>
             </Grid>
           </Grid>

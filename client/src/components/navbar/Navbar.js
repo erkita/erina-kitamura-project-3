@@ -19,7 +19,7 @@ const Navbar = () => {
 
   const logOutUser = () => {
     dispatch({ type: LOGOUT });
-    history.push("/");
+    history.push("/authentication");
     setUser(null);
   };
 
@@ -73,7 +73,7 @@ const Navbar = () => {
             className={classes.logInOut}
             variant="contained"
           >
-            Log in
+            Sign in
           </Button>
         )}
       </Toolbar>
