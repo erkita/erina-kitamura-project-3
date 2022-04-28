@@ -1,52 +1,34 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 export default makeStyles((theme) => ({
-  media: {
-    borderRadius: "20px",
-    objectFit: "cover",
-    width: "100%",
-    maxHeight: "600px",
+  paper: {
+    marginTop: "15vh",
+    borderRadius: "10px",
   },
   card: {
     display: "flex",
+    flexWrap: "wrap",
+    flexDirection: "column",
     width: "100%",
-    [theme.breakpoints.down("sm")]: {
-      flexWrap: "wrap",
-      flexDirection: "column",
-    },
   },
-  section: {
-    borderRadius: "20px",
-    margin: "10px",
-    flex: 1,
+  textSection: {
+    margin: "4vh",
   },
-  imageSection: {
-    marginLeft: "20px",
-    [theme.breakpoints.down("sm")]: {
-      marginLeft: 0,
-    },
+  subject: {
+    marginBottom: "2vh",
   },
-  recommendedPosts: {
-    display: "flex",
-    [theme.breakpoints.down("sm")]: {
-      flexDirection: "column",
-    },
+  divider: {
+    backgroundColor: "#366954",
+    margin: "20px 0px",
   },
-  loadingPaper: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "20px",
-    borderRadius: "15px",
-    height: "39vh",
+  plantDetails: {
+    marginBottom: "1vh",
+    color: "#564434",
   },
-  commentsOuterContainer: {
-    display: "flex",
-    justifyContent: "space-between",
-  },
-  commentsInnerContainer: {
-    height: "200px",
-    overflowY: "auto",
-    marginRight: "30px",
+  media: {
+    objectFit: "scale-down",
+    width: "100%",
+    maxHeight: "55vh",
+    marginBottom: "0.75vh",
   },
 }));

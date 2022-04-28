@@ -23,31 +23,43 @@ const DetailPage = () => {
   }
 
   return (
-    // <div>this pg is dumb and so am i :)</div>
-    <Paper style={{ padding: "20px", borderRadius: "15px" }} elevation={6}>
+    <Paper className={classes.paper}>
       <div className={classes.card}>
-        <div className={classes.section}>
-          <Typography variant="h3" component="h2">
+        <div className={classes.textSection}>
+          <Typography variant="h3" className={classes.subject}>
             {post.subject}
           </Typography>
-          <Typography gutterBottom variant="body1" component="p">
+          <Typography variant="h6">{`Posted by: ${post.name}`}</Typography>
+          <Typography variant="body1">
+            {moment(post.created).fromNow()}
+          </Typography>
+          <Divider className={classes.divider} />
+          <Typography
+            className={classes.plantDetails}
+            variant="body1"
+            component="p"
+          >
+            {`USDA zone: ${post.usdaZone}`}
+          </Typography>
+          <Typography
+            className={classes.plantDetails}
+            variant="body1"
+            component="p"
+          >
+            {`Light needs: ${post.lightNeeds}`}
+          </Typography>
+          <Typography
+            className={classes.plantDetails}
+            variant="body1"
+            component="p"
+          >
+            {`Water needs: ${post.waterNeeds}`}
+          </Typography>
+          <Typography variant="body1" component="p" gutterBottom>
             {post.message}
           </Typography>
-          <Typography variant="h6">
-            Created by:
-            <Link
-              to={`/users/${post.name}`}
-              style={{ textDecoration: "none", color: "#3f51b5" }}
-            >
-              {` ${post.name}`}
-            </Link>
-          </Typography>
-          <Typography variant="body1">
-            {moment(post.createdAt).fromNow()}
-          </Typography>
-          <Divider style={{ margin: "20px 0" }} />
         </div>
-        <div className={classes.imageSection}>
+        <div>
           <img
             className={classes.media}
             src={post.selectedFile || default_post_bg}
