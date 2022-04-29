@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { AppBar, Avatar, Toolbar, Typography, Button } from "@material-ui/core";
+import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import decode from "jwt-decode";
@@ -23,6 +24,10 @@ const Navbar = () => {
     setUser(null);
   };
 
+  const goAddPost = () => {
+    history.push("/create-a-post");
+  };
+
   useEffect(() => {
     const checkTokenExpiration = () => {
       const token = user?.token;
@@ -40,7 +45,6 @@ const Navbar = () => {
   }, [location]);
 
   return (
-    // <div></div>;
     <AppBar className={classes.appBar}>
       <div className={classes.container}>
         <Typography
@@ -55,6 +59,10 @@ const Navbar = () => {
       <Toolbar className={classes.toolbar}>
         {user?.result ? (
           <div className={classes.profile}>
+            <AddCircleOutlineIcon
+              className={classes.addCircle}
+              onClick={() => goAddPost()}
+            ></AddCircleOutlineIcon>
             <Avatar className={classes.avatar} alt={user.result.name}>
               {getUsersFirstInitial()}
             </Avatar>

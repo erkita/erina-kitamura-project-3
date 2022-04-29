@@ -56,8 +56,15 @@ export default makeStyles((theme) => ({
     alignItems: "center",
     textAlign: "center",
   },
+  addCircle: {
+    color: "#ffebdb",
+    height: theme.spacing(6),
+    width: theme.spacing(6),
+  },
   avatar: {
     color: "#366954",
     backgroundColor: "#ffebdb",
+    height: theme.spacing(5),
+    width: theme.spacing(5),
   },
 }));
