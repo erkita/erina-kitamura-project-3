@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { Paper, Typography, Divider } from "@material-ui/core";
 import moment from "moment";
 import useStyles from "./styles";
@@ -12,14 +12,14 @@ const DetailPage = () => {
   const dispatch = useDispatch();
   const post = useSelector((state) => state.posts);
   const { id } = useParams();
+  const history = useHistory();
 
   useEffect(() => {
+    if (post.length === 0) {
+      return history.push("/");
+    }
     dispatch(getPost(id));
   }, [id, dispatch]);
-
-  if (!post) {
-    return null;
-  }
 
   return (
     <Paper className={classes.paper}>
