@@ -5,6 +5,7 @@ import Navbar from "./components/navbar/Navbar";
 import HomePage from "./components/home/HomePage";
 import Authentication from "./components/authentication/Authentication";
 import DetailPage from "./components/detailPage/DetailPage";
+import PostFormPage from "./components/postFormPage/PostFormPage";
 
 function App() {
   const user = JSON.parse(localStorage.getItem("profile"));
@@ -25,6 +26,8 @@ function App() {
             component={handleAuthPageVisibility}
           />
           <Route path="/posts/:id" exact component={DetailPage} />
+          <Route path="/create-a-post" exact component={PostFormPage} />
+          <Route path="/create-a-post/:id" exact component={PostFormPage} />
         </Switch>
       </Container>
     </BrowserRouter>

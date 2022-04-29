@@ -9,8 +9,10 @@ export default makeStyles((theme) => ({
     height: "100%",
     width: "55vw",
     position: "relative",
+
     [theme.breakpoints.down("md")]: {
-      width: "80vw",
+      // width: "70vw",
+      border: "1px solid red",
     },
     [theme.breakpoints.down("sm")]: {
       margin: "2.75vw",

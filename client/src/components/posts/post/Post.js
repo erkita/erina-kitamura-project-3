@@ -16,7 +16,7 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import moment from "moment";
 import default_post_bg from "../../../images/default_post_bg.png";
 import { likePost, deletePost } from "../../../actions/posts";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import useStyles from "./styles";
 
 const Post = ({ post, setCurrentId }) => {
@@ -82,9 +82,14 @@ const Post = ({ post, setCurrentId }) => {
     history.push(`/posts/${post._id}`);
   };
 
+  const goEditPost = () => {
+    history.push(`/create-a-post/${post._id}`);
+  };
+
   const handleEdit = (e, id) => {
     e.stopPropagation();
     setCurrentId(id);
+    goEditPost();
   };
 
   return (
@@ -102,11 +107,10 @@ const Post = ({ post, setCurrentId }) => {
         {user?.result?._id === post?.user && (
           <div className={classes.button}>
             <Button
-              onClick={(e) => {
-                e.stopPropagation();
-                setCurrentId(post._id);
-              }}
               className={classes.editButton}
+              onClick={(e) => handleEdit(e, post._id)}
+              // component={Link}
+              // to={`/create-a-post/${post._id}`}
             >
               <MoreHorizIcon fontSize="medium" />
             </Button>

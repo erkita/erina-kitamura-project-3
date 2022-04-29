@@ -22,9 +22,6 @@ const HomePage = () => {
           <Grid item xs={12} sm={7} md={9}>
             <Posts setCurrentId={setCurrentId} />
           </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <Form currentId={currentId} setCurrentId={setCurrentId} />
-          </Grid>
         </Grid>
       </Container>
     </Grow>

@@ -4,7 +4,7 @@ import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import FileBase from "react-file-base64";
 import { useDispatch, useSelector } from "react-redux";
 import { createPost, updatePost } from "../../actions/posts";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 const Form = ({ currentId, setCurrentId }) => {
   const [postData, setPostData] = useState({
@@ -22,6 +22,7 @@ const Form = ({ currentId, setCurrentId }) => {
   const user = JSON.parse(localStorage.getItem("profile"));
   const history = useHistory();
   const classes = useStyles();
+  const { id } = useParams();
 
   const clear = () => {
     setCurrentId(0);
@@ -48,9 +49,6 @@ const Form = ({ currentId, setCurrentId }) => {
   };
 
   useEffect(() => {
-    if (!post?.subject) {
-      clear();
-    }
     if (post) {
       setPostData(post);
     }
@@ -73,8 +71,9 @@ const Form = ({ currentId, setCurrentId }) => {
         className={`${classes.root} ${classes.form}`}
         onSubmit={handleSubmit}
       >
-        <Typography variant="h6">
-          {currentId ? `Edit ${post.subject}` : "Create a post"}
+        <Typography variant="h4" className={classes.typography}>
+          {/* {currentId ? `Edit ${post.subject}` : "CREATE A POST"} */}
+          {currentId ? `EDIT POST` : "CREATE A POST"}
         </Typography>
         <TextField
           name="subject"
@@ -137,25 +136,24 @@ const Form = ({ currentId, setCurrentId }) => {
             }
           />
         </div>
-        <Button
-          className={classes.buttonSubmit}
-          variant="contained"
-          color="primary"
-          size="large"
-          type="submit"
-          fullWidth
-        >
-          Submit
-        </Button>
-        <Button
-          variant="contained"
-          color="secondary"
-          size="small"
-          onClick={clear}
-          fullWidth
-        >
-          Clear
-        </Button>
+        <div className={classes.buttonContainer}>
+          <Button
+            className={classes.submitButton}
+            variant="contained"
+            size="large"
+            type="submit"
+          >
+            Submit
+          </Button>
+          <Button
+            className={classes.clearButton}
+            variant="contained"
+            size="large"
+            onClick={clear}
+          >
+            Clear
+          </Button>
+        </div>
       </form>
     </Paper>
   );

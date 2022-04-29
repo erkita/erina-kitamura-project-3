@@ -5,7 +5,6 @@ const postSchema = mongoose.Schema({
   message: String,
   name: String,
   user: String,
-  tags: [String],
   usdaZone: String,
   lightNeeds: String,
   waterNeeds: String,

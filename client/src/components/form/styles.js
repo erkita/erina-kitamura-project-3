@@ -12,6 +12,13 @@ export default makeStyles((theme) => ({
     flexWrap: "wrap",
     justifyContent: "center",
   },
+  typography: {
+    color: "#366954",
+    fontWeight: 600,
+    letterSpacing: 2,
+    wordSpacing: 4,
+    margin: "2vh auto 2vh",
+  },
   paper: {
     position: "fixed",
     marginTop: "11.4vh",
@@ -43,7 +50,23 @@ export default makeStyles((theme) => ({
     width: "97%",
     margin: "10px 0",
   },
-  buttonSubmit: {
+  buttonContainer: {
+    display: "flex",
+    justifyContent: "center",
+    flexDirection: "column",
+  },
+  submitButton: {
+    margin: "1vh auto",
     marginBottom: 10,
+    width: "15vh",
+    color: "#e7ded9",
+    backgroundColor: "#366954",
+  },
+  clearButton: {
+    margin: "0 auto",
+    marginBottom: 10,
+    width: "15vh",
+    color: "#366954",
+    backgroundColor: "#e7ded9",
   },
 }));
