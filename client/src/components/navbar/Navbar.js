@@ -8,11 +8,11 @@ import { LOGOUT } from "../../actions/actionCalls";
 import useStyles from "./styles";
 
 const Navbar = () => {
-  const classes = useStyles();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
+  const classes = useStyles();
 
   const getUsersFirstInitial = () => {
     return user.result.name.charAt(0);

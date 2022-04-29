@@ -6,13 +6,6 @@ export const signUp = async (req, res) => {
   const { email, password, firstName, lastName } = req.body;
 
   try {
-    UserSchema.findOne({ email }, function (err, foundUser) {
-      if (foundUser) {
-        return res
-          .status(400)
-          .json({ message: "Account with same email already exists." });
-      }
-    });
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = await UserSchema.create({
       email,
@@ -24,11 +17,10 @@ export const signUp = async (req, res) => {
       "secret",
       { expiresIn: "6h" }
     );
-    res.status(201).json({ result: newUser, token });
+    res.status(201).json({ newUser, token });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Sign up unsuccessful." });
-    alert("Sign up unsuccessful.");
   }
 };
 
