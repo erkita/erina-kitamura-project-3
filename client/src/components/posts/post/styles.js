@@ -4,24 +4,11 @@ export default makeStyles((theme) => ({
   card: {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-between",
+    flex: "0 auto",
+    justifyContent: "center",
     borderRadius: "4px",
     height: "100%",
     width: "55vw",
-    position: "relative",
-
-    [theme.breakpoints.down("md")]: {
-      // width: "70vw",
-      border: "1px solid red",
-    },
-    [theme.breakpoints.down("sm")]: {
-      margin: "2.75vw",
-      marginBottom: "-1vh",
-    },
-    [theme.breakpoints.down("xs")]: {
-      margin: "2.55vw",
-      marginBottom: "-2vh",
-    },
   },
   cardMedia: {
     height: "0.25vh",

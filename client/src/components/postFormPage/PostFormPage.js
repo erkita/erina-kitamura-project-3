@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getPosts } from "../../actions/posts";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Form from "../form/Form";
 import { Container, Grow, Grid } from "@material-ui/core";
 

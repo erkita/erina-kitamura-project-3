@@ -4,7 +4,7 @@ import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import FileBase from "react-file-base64";
 import { useDispatch, useSelector } from "react-redux";
 import { createPost, updatePost } from "../../actions/posts";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const Form = ({ currentId, setCurrentId }) => {
   const [postData, setPostData] = useState({
@@ -22,7 +22,6 @@ const Form = ({ currentId, setCurrentId }) => {
   const user = JSON.parse(localStorage.getItem("profile"));
   const history = useHistory();
   const classes = useStyles();
-  const { id } = useParams();
 
   const clear = () => {
     setCurrentId(0);
@@ -72,7 +71,6 @@ const Form = ({ currentId, setCurrentId }) => {
         onSubmit={handleSubmit}
       >
         <Typography variant="h4" className={classes.typography}>
-          {/* {currentId ? `Edit ${post.subject}` : "CREATE A POST"} */}
           {currentId ? `EDIT POST` : "CREATE A POST"}
         </Typography>
         <TextField

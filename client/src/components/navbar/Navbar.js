@@ -23,18 +23,18 @@ const Navbar = () => {
     setUser(null);
   };
 
-  const checkTokenExpiration = () => {
-    const token = user?.token;
-    if (token) {
-      let currentTimestamp = new Date().getTime() / 1000;
-      const decodedToken = decode(token);
-      if (currentTimestamp > decodedToken.exp) {
-        logOutUser();
-      }
-    }
-  };
-
   useEffect(() => {
+    const checkTokenExpiration = () => {
+      const token = user?.token;
+      if (token) {
+        let currentTimestamp = new Date().getTime() / 1000;
+        const decodedToken = decode(token);
+        if (currentTimestamp > decodedToken.exp) {
+          logOutUser();
+        }
+      }
+    };
+
     checkTokenExpiration();
     setUser(JSON.parse(localStorage.getItem("profile")));
   }, [location]);

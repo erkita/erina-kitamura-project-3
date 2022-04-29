@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Paper, Typography, Divider } from "@material-ui/core";
 import moment from "moment";
 import useStyles from "./styles";
@@ -10,13 +10,12 @@ import default_post_bg from "../../images/default_post_bg.png";
 const DetailPage = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const history = useHistory();
   const post = useSelector((state) => state.posts);
   const { id } = useParams();
 
   useEffect(() => {
     dispatch(getPost(id));
-  }, [id]);
+  }, [id, dispatch]);
 
   if (!post) {
     return null;

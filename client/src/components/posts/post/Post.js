@@ -16,7 +16,7 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import moment from "moment";
 import default_post_bg from "../../../images/default_post_bg.png";
 import { likePost, deletePost } from "../../../actions/posts";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import useStyles from "./styles";
 
 const Post = ({ post, setCurrentId }) => {
@@ -109,8 +109,6 @@ const Post = ({ post, setCurrentId }) => {
             <Button
               className={classes.editButton}
               onClick={(e) => handleEdit(e, post._id)}
-              // component={Link}
-              // to={`/create-a-post/${post._id}`}
             >
               <MoreHorizIcon fontSize="medium" />
             </Button>
