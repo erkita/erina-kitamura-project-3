@@ -14,6 +14,10 @@ app.use(cors());
 app.use("/posts", postRoutes);
 app.use("/user", userRoutes);
 
+app.get("/", (req, res) => {
+  res.send("App running succesfully");
+});
+
 const mongoEndpoint =
   "mongodb+srv://erkita:2062763511@cluster0.vksqs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const PORT = process.env.PORT || 8000;
