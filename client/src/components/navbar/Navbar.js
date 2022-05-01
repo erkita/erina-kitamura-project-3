@@ -57,15 +57,13 @@ const Navbar = () => {
         </Typography>
       </div>
       <Toolbar className={classes.toolbar}>
-        {user?.result ? (
+        {user ? (
           <div className={classes.profile}>
             <AddCircleOutlineIcon
               className={classes.addCircle}
               onClick={() => goAddPost()}
             ></AddCircleOutlineIcon>
-            <Avatar className={classes.avatar} alt={user.result.name}>
-              {getUsersFirstInitial()}
-            </Avatar>
+            <Avatar className={classes.avatar}>{getUsersFirstInitial()}</Avatar>
             <Button
               className={classes.logInOut}
               variant="contained"

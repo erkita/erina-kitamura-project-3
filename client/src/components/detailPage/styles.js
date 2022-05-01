@@ -35,4 +35,12 @@ export default makeStyles((theme) => ({
     maxHeight: "55vh",
     marginBottom: "3vh",
   },
+  postActionButton: {
+    size: "small",
+    color: "#366954",
+  },
+  postActions: {
+    display: "flex",
+    justifyContent: "space-between",
+  },
 }));

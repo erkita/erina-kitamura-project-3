@@ -23,12 +23,12 @@ const initialUserState = {
 };
 
 const Authentication = () => {
-  const classes = useStyles();
   const [hasAccount, setHasAccount] = useState(true);
   const [visiblePassword, setVisiblePassword] = useState(false);
   const [userData, setUserData] = useState(initialUserState);
   const dispatch = useDispatch();
   const history = useHistory();
+  const classes = useStyles();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,11 +37,6 @@ const Authentication = () => {
     } else {
       dispatch(signUp(userData, history));
     }
-    // if (hasAccount) {
-    //   dispatch(signUp(userData, history));
-    // } else {
-    //   dispatch(signIn(userData, history));
-    // }
   };
 
   const handleChange = (e) => {

@@ -10,6 +10,10 @@ import PostFormPage from "./components/postFormPage/PostFormPage";
 function App() {
   const user = JSON.parse(localStorage.getItem("profile"));
 
+  const handleAuthenticationSwitch = () => {
+    return !user ? <Authentication /> : <Redirect to="/" />;
+  };
+
   return (
     <BrowserRouter>
       <Container maxwidth="lg">
@@ -19,7 +23,7 @@ function App() {
           <Route
             path="/authentication"
             exact
-            component={() => (!user ? <Authentication /> : <Redirect to="/" />)}
+            component={() => handleAuthenticationSwitch()}
           />
           <Route path="/posts/:id" exact component={DetailPage} />
           <Route path="/create-a-post" exact component={PostFormPage} />

@@ -1,25 +1,75 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
-import { Paper, Typography, Divider } from "@material-ui/core";
+import {
+  Paper,
+  Typography,
+  Divider,
+  CardActions,
+  Button,
+} from "@material-ui/core";
 import moment from "moment";
 import useStyles from "./styles";
 import { getPost } from "../../actions/posts";
 import default_post_bg from "../../images/default_post_bg.png";
+import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
+import ThumbUpAltOutlined from "@material-ui/icons/ThumbUpAltOutlined";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 const DetailPage = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const post = useSelector((state) => state.posts);
   const { id } = useParams();
+  const [prevId, setPrevId] = useState("");
   const history = useHistory();
+  const user = JSON.parse(localStorage.getItem("profile"));
+  const userId = user?.result?._id;
 
   useEffect(() => {
-    if (post.length === 0) {
+    if (post.length === 0 && id === prevId) {
       return history.push("/");
     }
+    setPrevId("id");
     dispatch(getPost(id));
   }, [id, dispatch]);
+
+  const displayLikes = (likes) => {
+    return `${likes?.length} like${likes?.length === 1 ? "" : "s"}`;
+  };
+
+  const userLikePost = (likes) => {
+    return (
+      <>
+        <ThumbUpAltIcon fontSize="small" />
+        &nbsp;{displayLikes(likes)}
+      </>
+    );
+  };
+
+  const userUnlikePost = (likes) => {
+    return (
+      <>
+        <ThumbUpAltOutlined fontSize="small" />
+        &nbsp;{displayLikes(likes)}
+      </>
+    );
+  };
+
+  const Likes = (postLikes) => {
+    postLikes = Object.values(postLikes);
+    if (postLikes[0] !== undefined && postLikes[0].length > 0) {
+      return postLikes[0].find((like) => like === userId)
+        ? userLikePost(postLikes[0])
+        : userUnlikePost(postLikes[0]);
+    }
+    return (
+      <>
+        <ThumbUpAltOutlined fontSize="small" />
+        &nbsp;Like
+      </>
+    );
+  };
 
   return (
     <Paper className={classes.paper}>
@@ -69,6 +119,24 @@ const DetailPage = () => {
           />
         </div>
       </div>
+      <CardActions className={classes.postActions}>
+        <Button
+          className={classes.postActionButton}
+          disabled={!user?.result}
+          // onClick={handleLike}
+        >
+          <Likes postLikes={post?.likes} />
+        </Button>
+        {user?.result?._id === post?.user && (
+          <Button
+            className={classes.postActionButton}
+            // onClick={() => dispatch(deletePost(post._id))}
+          >
+            <DeleteIcon></DeleteIcon>
+            &nbsp;Delete
+          </Button>
+        )}
+      </CardActions>
     </Paper>
   );
 };
