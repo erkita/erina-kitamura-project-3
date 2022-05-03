@@ -9,8 +9,6 @@ import {
   ButtonBase,
   Typography,
 } from "@material-ui/core/";
-import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
-import ThumbUpAltOutlined from "@material-ui/icons/ThumbUpAltOutlined";
 import DeleteIcon from "@material-ui/icons/Delete";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import moment from "moment";
@@ -18,6 +16,7 @@ import default_post_bg from "../../../images/default_post_bg.png";
 import { likePost, deletePost } from "../../../actions/posts";
 import { useHistory } from "react-router-dom";
 import useStyles from "./styles";
+import PostLikes from "./PostLikes";
 
 const Post = ({ post, setCurrentId }) => {
   const classes = useStyles();
@@ -40,42 +39,6 @@ const Post = ({ post, setCurrentId }) => {
     } else {
       setLikes([...post.likes, userId]);
     }
-  };
-
-  const displayLikes = () => {
-    return `${likes.length} like${likes.length === 1 ? "" : "s"}`;
-  };
-
-  const userLikePost = () => {
-    return (
-      <>
-        <ThumbUpAltIcon fontSize="small" />
-        &nbsp;{displayLikes()}
-      </>
-    );
-  };
-
-  const userUnlikePost = () => {
-    return (
-      <>
-        <ThumbUpAltOutlined fontSize="small" />
-        &nbsp;{displayLikes()}
-      </>
-    );
-  };
-
-  const Likes = () => {
-    if (likes.length > 0) {
-      return likes.find((like) => like === userId)
-        ? userLikePost()
-        : userUnlikePost();
-    }
-    return (
-      <>
-        <ThumbUpAltOutlined fontSize="small" />
-        &nbsp;Like
-      </>
-    );
   };
 
   const goToPost = () => {
@@ -132,7 +95,8 @@ const Post = ({ post, setCurrentId }) => {
           disabled={!user?.result}
           onClick={handleLike}
         >
-          <Likes />
+          {/* <Likes /> */}
+          <PostLikes likes={likes} userId={userId} />
         </Button>
         {user?.result?._id === post?.user && (
           <Button
