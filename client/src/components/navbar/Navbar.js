@@ -28,6 +28,12 @@ const Navbar = () => {
     history.push("/create-a-post");
   };
 
+  const signInUser = () => {
+    console.log("sing in");
+    console.log(user);
+    history.push("/authentication");
+  };
+
   useEffect(() => {
     const checkTokenExpiration = () => {
       const token = user?.token;
@@ -74,10 +80,9 @@ const Navbar = () => {
           </div>
         ) : (
           <Button
-            component={Link}
-            to="/authentication"
             className={classes.logInOut}
             variant="contained"
+            onClick={signInUser}
           >
             Sign in
           </Button>

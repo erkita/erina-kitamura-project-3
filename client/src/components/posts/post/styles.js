@@ -9,6 +9,9 @@ export default makeStyles((theme) => ({
     borderRadius: "4px",
     height: "100%",
     width: "55vw",
+    [theme.breakpoints.down("sm")]: {
+      width: "70vw",
+    },
   },
   cardMedia: {
     height: "0.25vh",

@@ -120,18 +120,11 @@ const DetailPage = () => {
         </div>
       </div>
       <CardActions className={classes.postActions}>
-        <Button
-          className={classes.postActionButton}
-          disabled={!user?.result}
-          // onClick={handleLike}
-        >
+        <Button className={classes.postActionButton} disabled={true}>
           <Likes postLikes={post?.likes} />
         </Button>
         {user?.result?._id === post?.user && (
-          <Button
-            className={classes.postActionButton}
-            // onClick={() => dispatch(deletePost(post._id))}
-          >
+          <Button className={classes.postActionButton} disabled={true}>
             <DeleteIcon></DeleteIcon>
             &nbsp;Delete
           </Button>

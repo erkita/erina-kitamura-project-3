@@ -11,7 +11,7 @@ function App() {
   const user = JSON.parse(localStorage.getItem("profile"));
 
   const handleAuthenticationSwitch = () => {
-    return !user ? <Authentication /> : <Redirect to="/" />;
+    return user ? <Redirect to="/" /> : <Authentication />;
   };
 
   return (
