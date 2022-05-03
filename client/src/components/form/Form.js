@@ -51,6 +51,10 @@ const Form = ({ currentId, setCurrentId }) => {
     clear();
   };
 
+  const getEditOrCreatePost = () => {
+    return currentId ? "EDIT POST" : "CREATE A POST";
+  };
+
   useEffect(() => {
     if (post) {
       setPostData(post);
@@ -59,7 +63,7 @@ const Form = ({ currentId, setCurrentId }) => {
 
   if (!user?.result?.name) {
     return (
-      <Paper className={classes.paper} elevation={6}>
+      <Paper className={classes.paper}>
         <Typography variant="h6" align="center">
           Please sign in to create or to like a post.
         </Typography>
@@ -75,7 +79,7 @@ const Form = ({ currentId, setCurrentId }) => {
         onSubmit={handleSubmit}
       >
         <Typography variant="h4" className={classes.typography}>
-          {currentId ? `EDIT POST` : "CREATE A POST"}
+          {getEditOrCreatePost()}
         </Typography>
         <TextField
           name="subject"

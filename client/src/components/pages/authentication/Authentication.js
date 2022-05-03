@@ -39,7 +39,7 @@ const Authentication = () => {
     }
   };
 
-  const handleChange = (e) => {
+  const handleInputChange = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
 
@@ -53,6 +53,16 @@ const Authentication = () => {
     setVisiblePassword(false);
   };
 
+  const displaySignInOrUp = () => {
+    return hasAccount ? "Sign in" : "Sign up";
+  };
+
+  const displayCreateOrSignInAccount = () => {
+    return hasAccount
+      ? "Create an account"
+      : "Already have an account? Sign in";
+  };
+
   return (
     <Container component="main" maxWidth="xs">
       <Paper className={classes.paper}>
@@ -60,7 +70,7 @@ const Authentication = () => {
           <LockOutlinedIcon />
         </Avatar>
         <Typography className={classes.fontColor} variant="h5">
-          {!hasAccount ? "Sign up" : "Sign in"}
+          {displaySignInOrUp()}
         </Typography>
         <form className={classes.form} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
@@ -69,26 +79,26 @@ const Authentication = () => {
                 <UserInfo
                   name="firstName"
                   label="First Name"
-                  handleChange={handleChange}
+                  handleInputChange={handleInputChange}
                   autoFocus
                 />
                 <UserInfo
                   name="lastName"
                   label="Last Name"
-                  handleChange={handleChange}
+                  handleInputChange={handleInputChange}
                 />
               </>
             )}
             <UserInfo
               name="email"
               label="Email Address"
-              handleChange={handleChange}
+              handleInputChange={handleInputChange}
               type="email"
             />
             <UserInfo
               name="password"
               label="Password"
-              handleChange={handleChange}
+              handleInputChange={handleInputChange}
               type={visiblePassword ? "text" : "password"}
               handleShowPassword={handleShowPassword}
             />
@@ -96,13 +106,13 @@ const Authentication = () => {
               <UserInfo
                 name="confirmPassword"
                 label="Confirm password"
-                handleChange={handleChange}
+                handleInputChange={handleInputChange}
                 type="password"
               />
             )}
           </Grid>
           <Button type="submit" fullWidth className={classes.submitButton}>
-            {hasAccount ? "Sign in" : "Sign up"}
+            {displaySignInOrUp()}
           </Button>
           <Grid container justifyContent="center">
             <Grid item>
@@ -110,9 +120,7 @@ const Authentication = () => {
                 className={classes.submitButtonInverse}
                 onClick={handleSignInAndUp}
               >
-                {hasAccount
-                  ? "Create an account"
-                  : "Already have an account? Sign in"}
+                {displayCreateOrSignInAccount()}
               </Button>
             </Grid>
           </Grid>

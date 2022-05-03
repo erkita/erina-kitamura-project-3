@@ -8,14 +8,18 @@ const UserInfo = ({
   label,
   autoFocus,
   type,
-  handleChange,
+  handleInputChange,
   handleShowPassword,
 }) => {
+  const handlePasswordVisibility = (type) => {
+    return type === "password" ? <Visibility /> : <VisibilityOff />;
+  };
+
   return (
     <Grid item xs={12} sm={12}>
       <TextField
         name={name}
-        onChange={handleChange}
+        onChange={handleInputChange}
         variant="outlined"
         required
         fullWidth
@@ -28,7 +32,7 @@ const UserInfo = ({
                 endAdornment: (
                   <InputAdornment position="end">
                     <IconButton onClick={handleShowPassword}>
-                      {type === "password" ? <Visibility /> : <VisibilityOff />}
+                      {handlePasswordVisibility()}
                     </IconButton>
                   </InputAdornment>
                 ),
