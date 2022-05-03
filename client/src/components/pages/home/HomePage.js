@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Container, Grow, Grid } from "@material-ui/core";
-import Posts from "../posts/Posts";
+import Posts from "../../posts/Posts";
 import { useDispatch } from "react-redux";
-import { getPosts } from "../../actions/posts";
+import { getPosts } from "../../../actions/posts";
 import useStyles from "./styles";
 
 const HomePage = () => {

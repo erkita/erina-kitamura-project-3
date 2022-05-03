@@ -29,8 +29,6 @@ const Navbar = () => {
   };
 
   const signInUser = () => {
-    console.log("sing in");
-    console.log(user);
     history.push("/authentication");
   };
 

@@ -2,10 +2,10 @@ import React from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { Container } from "@material-ui/core";
 import Navbar from "./components/navbar/Navbar";
-import HomePage from "./components/home/HomePage";
-import Authentication from "./components/authentication/Authentication";
-import DetailPage from "./components/detailPage/DetailPage";
-import PostFormPage from "./components/postFormPage/PostFormPage";
+import HomePage from "./components/pages/home/HomePage";
+import Authentication from "./components/pages/authentication/Authentication";
+import DetailPage from "./components/pages/detailPage/DetailPage";
+import PostFormPage from "./components/pages/postFormPage/PostFormPage";
 
 function App() {
   const user = JSON.parse(localStorage.getItem("profile"));

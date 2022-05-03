@@ -10,8 +10,8 @@ import {
 } from "@material-ui/core";
 import moment from "moment";
 import useStyles from "./styles";
-import { getPost } from "../../actions/posts";
-import default_post_bg from "../../images/default_post_bg.png";
+import { getPost } from "../../../actions/posts";
+import default_post_bg from "../../../images/default_post_bg.png";
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import ThumbUpAltOutlined from "@material-ui/icons/ThumbUpAltOutlined";
 import DeleteIcon from "@material-ui/icons/Delete";
