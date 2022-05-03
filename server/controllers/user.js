@@ -17,7 +17,7 @@ export const signUp = async (req, res) => {
       "secret",
       { expiresIn: "6h" }
     );
-    res.status(201).json({ newUser, token });
+    res.status(201).json({ result: newUser, token });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Sign up unsuccessful." });

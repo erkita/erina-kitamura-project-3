@@ -15,6 +15,7 @@ const Navbar = () => {
   const classes = useStyles();
 
   const getUsersFirstInitial = () => {
+    console.log(user);
     return user.result.name.charAt(0);
   };
 
