@@ -4,8 +4,10 @@ import cors from "cors";
 import mongoose from "mongoose";
 import postRoutes from "./routes/post.js";
 import userRoutes from "./routes/user.js";
+import dotenv from "dotenv";
 
 const app = express();
+dotenv.config();
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
@@ -18,8 +20,7 @@ app.get("/", (req, res) => {
   res.send("App running succesfully");
 });
 
-const mongoEndpoint =
-  "mongodb+srv://erkita:2062763511@cluster0.vksqs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const mongoEndpoint = process.env.mongoEndpoint;
 const PORT = process.env.PORT || 8000;
 
 mongoose
