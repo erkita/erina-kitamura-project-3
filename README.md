@@ -1,7 +1,5 @@
 # Plant A Post
 
-https://plantapost.netlify.app/
-
 ### Overview
 * Fullstack project
 * Simple social media application that allows users to post their thoughts and reviews of plants
@@ -23,6 +21,9 @@ https://plantapost.netlify.app/
   * Show password to user
   * Encrypted password in database for security
 * Mobile friendly
+
+### Link
+https://plantapost.netlify.app/
 
 ### Demo
 Sign in existing user, general homepage, and detail page: <br />
