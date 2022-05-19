@@ -6,22 +6,6 @@
 * Used React, Node.js, Express, and MongoDB
 * Deployed on Heroku (backend) and Netlify (frontend)
 
-### About the application
-* Homepage includes compilation of all posts, sorted from oldest to newest
-* If a post is clicked, it will go to its detail page
-* User with accounts can add post their reviews/thoughts for plants
-  * Post details includes plant name, USDA zone, light needs, water needs, message, and optional image (if no image, default image will be used in post)
-  * Authenticated user can like other users' posts
-  * Authenticated user can edit or delete their own post
-* Non-authenticated user can view all the posts 
-* Includes authentication feature
-  * Sign-up for account
-  * Sign-in to account
-  * Log out from account
-  * Show password to user
-  * Encrypted password in database for security
-* Mobile friendly
-
 ### Link
 https://plantapost.netlify.app/
 
@@ -40,3 +24,19 @@ Log out existing user and make new user account:<br />
 
 Application in different screensizes (laptop, mobile, tablet):
 ![ezgif com-gif-maker (3)](https://user-images.githubusercontent.com/82434097/169165067-9a3cca7e-48ab-4a9b-8dd1-fc2b6d89c936.gif)
+
+### About the application
+* Homepage includes compilation of all posts, sorted from oldest to newest
+* If a post is clicked, it will go to its detail page
+* User with accounts can add post their reviews/thoughts for plants
+  * Post details includes plant name, USDA zone, light needs, water needs, message, and optional image (if no image, default image will be used in post)
+  * Authenticated user can like other users' posts
+  * Authenticated user can edit or delete their own post
+* Non-authenticated user can view all the posts 
+* Includes authentication feature
+  * Sign-up for account
+  * Sign-in to account
+  * Log out from account
+  * Show password to user
+  * Encrypted password in database for security
+* Mobile friendly
